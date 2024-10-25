@@ -13,7 +13,6 @@ const screen = {
             </div>`;
 
         let repositoriesItens = ''
-
         user.repositories.forEach(repo => repositoriesItens += `
             <li>
                 <a href="${repo.html_url}" target="_blank">${repo.name}
@@ -21,7 +20,7 @@ const screen = {
                         <li>🍴${repo.forks}</li>
                         <li>⭐${repo.stargazers_count}</li>
                         <li>👀${repo.watchers}</li>
-                        <li>🖥️${repo.language}</li>
+                        <li>🖥️${repo.language ?? 'X'}</li>
                     </ul>
                 </a>
             </li>`)
@@ -37,11 +36,13 @@ const screen = {
         user.events.forEach(function(event){
 
             if(event.type === 'CreateEvent'){
-                eventsItens += `<li><p>${event.repo.name} - Sem mensagem de commit`
+                eventsItens += `<li>
+                                    <p>${event.repo.name} <br><br> Sem mensagem de commit</p>
+                                </li>`
             }else if(event.type === 'PushEvent'){
-                let quantityCommit = event.payload.commits.length
-                let messageCommit = event.payload.commits[quantityCommit - 1].message
-                eventsItens += `<li><p>${event.repo.name} - ${messageCommit}`
+                eventsItens += `<li>
+                                    <p>${event.repo.name} <br><br> ${event.payload.commits[0].message}</P>
+                                </li>`
             }
         })
 
