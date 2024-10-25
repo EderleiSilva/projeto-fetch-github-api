@@ -6,8 +6,5 @@ Projeto desenvoldo para correção dado pelo curso DevQuest, foi dado um codigo 
 ## Tecnologias Utilizadas
 - HTML
 - CSS
-<<<<<<< HEAD
 - JS
-=======
 - JS
->>>>>>> d9dbd0c6a244064e5d5f284af8eb06c6dced5686
